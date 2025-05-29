@@ -1,0 +1,546 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #7B68EE; /* 동숲 느낌의 보라색 */
+    --secondary-btn-color: #A0A0A0; /* 이전 버튼 등 회색 */
+    --text-color-dark: #212121;
+    --text-color-light: #4A4A4A;
+    --background-color: #F8F9FA;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --selection-color: #E6E6FA; /* 선택된 답변 배경색 */
+    --success-check: #28a745; /* 체크 아이콘 색상 */
+
+    --font-family-primary: 'Noto Sans KR', sans-serif;
+    --font-size-base: 1rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 800px; /* 퀴즈 콘텐츠에 맞게 조정 */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--text-color-dark);
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; } /* 주민 이름에 사용 */
+
+p {
+    font-size: var(--font-size-base);
+    margin-bottom: 1em;
+    color: var(--text-color-light);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #6A5ACD;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Visually Hidden for accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    -webkit-appearance: none; /* Remove default button styles for iOS */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.btn:focus-visible { /* Add focus ring for accessibility */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    border: 1px solid var(--primary-color);
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: #6A5ACD;
+    transform: translateY(-2px);
+}
+.primary-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--secondary-btn-color);
+    border: 1px solid var(--secondary-btn-color);
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background-color: var(--secondary-btn-color);
+    color: var(--card-background);
+    transform: translateY(-2px);
+}
+.secondary-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- Sections --- */
+.section {
+    padding: 80px 0;
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+}
+.section:nth-child(even) {
+    background-color: var(--background-color);
+}
+.is-hidden {
+    display: none !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--background-color);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg opacity="0.1"%3E%3Cpath d="M50 0C22.386 0 0 22.386 0 50s22.386 50 50 50 50-22.386 50-50S77.614 0 50 0zm0 10c22.091 0 40 17.909 40 40s-17.909 40-40 40-40-17.909-40-40 17.909-40 40-40z" fill="%237B68EE"/%3E%3Cpath d="M50 10C27.909 10 10 27.909 10 50s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40z" fill="%237B68EE"/%3E%3C/g%3E%3C/svg%3E');
+    background-size: 50px 50px;
+    background-repeat: repeat;
+}
+
+.hero-section h1 {
+    font-size: 3.6rem;
+    margin-bottom: 0.2em;
+    color: var(--primary-color);
+}
+
+.hero-section .subtitle {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-color-dark);
+    margin-bottom: 1.5rem;
+}
+
+.hero-section .intro-message {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    color: var(--text-color-light);
+}
+
+/* Quiz Section */
+.quiz-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+}
+
+.progress-text {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    font-weight: 500;
+}
+
+.question-slide-container {
+    position: relative;
+    overflow: hidden;
+    /* Height will be set by JS for smooth transition */
+    transition: height 0.5s ease-out; /* Smooth height transition */
+}
+
+.question-block {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.question-block.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+.question-block.leaving-left {
+    transform: translateX(-100%);
+}
+.question-block.entering-right {
+    transform: translateX(100%);
+}
+
+.question-block p.question-text {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.answer-option {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.answer-option:hover:not(.selected) { /* Add not selected to prevent hover on selected */
+    background-color: var(--background-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.answer-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+/* Custom checkbox style */
+.answer-option .custom-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.answer-option .custom-radio::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.answer-option input[type="radio"]:checked + .custom-radio {
+    border-color: var(--primary-color);
+    background-color: var(--selection-color);
+}
+.answer-option input[type="radio"]:checked + .custom-radio::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.answer-option input[type="radio"]:checked ~ label {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.answer-option.selected {
+    background-color: var(--selection-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.01);
+}
+.answer-option.selected .custom-radio {
+    border-color: var(--primary-color);
+    background-color: var(--selection-color);
+}
+.answer-option.selected .custom-radio::after {
+    opacity: 1;
+    transform: scale(1);
+}
+.answer-option.selected label {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 15px;
+}
+.quiz-navigation .btn {
+    flex-grow: 1;
+    width: auto;
+}
+
+/* Result Section */
+.result-section {
+    text-align: center;
+    background-color: var(--background-color);
+    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg opacity="0.05"%3E%3Cpath d="M50 0C22.386 0 0 22.386 0 50s22.386 50 50 50 50-22.386 50-50S77.614 0 50 0zm0 10c22.091 0 40 17.909 40 40s-17.909 40-40 40-40-17.909-40-40 17.909-40 40-40z" fill="%237B68EE"/%3E%3Cpath d="M50 10C27.909 10 10 27.909 10 50s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40z" fill="%237B68EE"/%3E%3C/g%3E%3C/svg%3E');
+    background-size: 70px 70px;
+    background-repeat: repeat;
+}
+
+.villager-result-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: pop-in 0.8s ease-out forwards;
+}
+
+@keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+.villager-image {
+    max-width: 100%; /* 이미지가 부모 컨테이너를 넘지 않도록 */
+    height: auto; /* 비율 유지 */
+    width: 200px; /* 고정 너비 (확장 가능) */
+    /* border-radius: 50%; <-- 원형 테두리 제거 */
+    object-fit: contain; /* 이미지가 잘리지 않고 전체가 보이도록 */
+    margin-bottom: 25px;
+    /* border: 5px solid var(--primary-color); <-- 원형 테두리 제거 */
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.05); /* 은은한 그림자 유지 */
+    animation: bounce-in 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes bounce-in {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+
+.villager-name {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.villager-personality {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondary-btn-color);
+    margin-bottom: 20px;
+}
+
+.villager-description {
+    font-size: 1.1rem;
+    color: var(--text-color-light);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Share Options */
+.share-options {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+.share-options p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--text-color-dark);
+}
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px; /* 공유 버튼과 다시하기 버튼 사이 간격 */
+}
+.share-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    min-width: 100px;
+    border-radius: 6px;
+}
+.kakao-share {
+    background-color: #FEE500;
+    color: #3C1E1E;
+    border-color: #FEE500;
+}
+.kakao-share:hover {
+    background-color: #FDD600;
+    border-color: #FDD600;
+}
+.twitter-share {
+    background-color: #1DA1F2;
+    color: white;
+    border-color: #1DA1F2;
+}
+.twitter-share:hover {
+    background-color: #1A92DA;
+    border-color: #1A92DA;
+}
+.facebook-share {
+    background-color: #1877F2;
+    color: white;
+    border-color: #1877F2;
+}
+.facebook-share:hover {
+    background-color: #166EEB;
+    border-color: #166EEB;
+}
+.copy-link-share {
+    background-color: var(--text-color-light);
+    color: var(--card-background);
+    border-color: var(--text-color-light);
+}
+.copy-link-share:hover {
+    background-color: #333;
+    border-color: #333;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--text-color-dark);
+    color: #E0E0E0;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* --- Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsive Design (Mobile-First Adjustments) --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.5rem; }
+    .hero-section .subtitle { font-size: 1.4rem; }
+    .hero-section .intro-message { font-size: 1rem; }
+    .btn { padding: 10px 24px; font-size: 1rem; }
+    .section { padding: 60px 0; }
+    .villager-image { width: 150px; } /* 이미지 너비 조정 */
+    .villager-name { font-size: 1.8rem; }
+    .villager-personality { font-size: 1.1rem; }
+    .villager-description { font-size: 1rem; }
+    .question-block p.question-text { font-size: 1.2rem; }
+    .answer-option label { font-size: 1rem; }
+    .villager-result-card { padding: 30px; }
+    
+    .quiz-navigation {
+        flex-direction: column; /* Stack buttons vertically on mobile */
+        gap: 15px; /* Space between stacked buttons */
+    }
+    .quiz-navigation .btn {
+        width: 100%; /* Full width for mobile buttons */
+    }
+    .share-buttons {
+        margin-bottom: 30px; /* Mobile spacing adjustment */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    .hero-section .subtitle { font-size: 1.2rem; }
+    .hero-section .intro-message { font-size: 0.9rem; }
+    .container { padding: 0 15px; }
+    .btn { padding: 8px 20px; font-size: 0.9rem; }
+    .question-block { padding: 20px; }
+    .share-btn { min-width: unset; width: 100%; } /* Smaller buttons on tiny screens */
+}
