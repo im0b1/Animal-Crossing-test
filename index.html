@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">내 안의 모동숲 주민 찾기</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- OGP 태그 (JavaScript로 동적 업데이트될 기본값) -->
+    <meta property="og:title" content="내 안의 모동숲 주민 찾기" id="og-title">
+    <meta property="og:description" content="나는 모여봐요 동물의 숲에서 어떤 주민일까요? 지금 테스트해보세요!" id="og-description">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/7B68EE/FFFFFF?text=Animal+Crossing+Quiz" id="og-image">
+    <meta property="og:url" content="https://codepen.io/your-username/pen/your-pen-id" id="og-url"> <!-- 실제 CodePen URL로 변경 필요 -->
+</head>
+<body>
+    <header class="hero-section">
+        <div class="container animate-on-scroll fade-in-up">
+            <h1>내 안의 모동숲 주민 찾기</h1>
+            <p class="subtitle">나는 모여봐요 동물의 숲에서 어떤 주민일까요?</p>
+            <p class="intro-message">몇 가지 질문에 답하고 당신과 가장 닮은 동물의 숲 주민을 만나보세요!</p>
+            <!-- 이름 입력창 제거 -->
+            <button id="start-quiz-btn" class="btn primary-btn">테스트 시작하기</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="quiz-section" class="section quiz-section is-hidden">
+            <div class="container">
+                <div class="progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5" aria-labelledby="progress-text">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <span class="progress-text" id="progress-text">0 / 0</span>
+                </div>
+                <div id="questions-container" class="question-slide-container">
+                    <!-- JavaScript가 이곳에 질문들을 삽입합니다. -->
+                </div>
+                <div class="quiz-navigation">
+                    <button id="prev-question-btn" class="btn secondary-btn is-hidden" aria-label="이전 질문으로 이동">이전 질문</button>
+                    <button id="next-question-btn" class="btn primary-btn is-hidden" aria-label="다음 질문으로 이동">다음 질문</button>
+                    <button id="submit-quiz-btn" class="btn primary-btn is-hidden" aria-label="결과 보기">결과보기</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="result-section" class="section result-section is-hidden animate-on-scroll fade-in-up">
+            <div class="container text-center">
+                <h2 id="result-intro-text"></h2>
+                <div class="villager-result-card">
+                    <img id="result-image" src="" alt="결과 주민 이미지" class="villager-image" onerror="this.src='https://via.placeholder.com/200/cccccc/ffffff?text=No+Image';">
+                    <h3 id="result-name" class="villager-name"></h3>
+                    <p id="result-personality" class="villager-personality"></p>
+                    <p id="result-description" class="villager-description"></p>
+                </div>
+                <div class="share-options">
+                    <p>결과를 친구와 공유해보세요!</p>
+                    <div class="share-buttons" role="group" aria-label="결과 공유 버튼">
+                        <button class="btn share-btn kakao-share" data-share="kakao" aria-label="카카오톡으로 공유">카카오톡</button>
+                        <button class="btn share-btn twitter-share" data-share="twitter" aria-label="트위터로 공유">트위터</button>
+                        <button class="btn share-btn facebook-share" data-share="facebook" aria-label="페이스북으로 공유">페이스북</button>
+                        <button class="btn share-btn copy-link-share" data-share="copy-link" aria-label="링크 복사">링크 복사</button>
+                    </div>
+                </div>
+                <button id="reset-quiz-btn" class="btn primary-btn" aria-label="테스트 다시하기">다시하기</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 모동숲 주민 테스트. Powered by CodePen.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
